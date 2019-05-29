@@ -2,6 +2,8 @@ package db.project.wholesalemanage.Model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import db.project.wholesalemanage.Model.Stock;
+import db.project.wholesalemanage.Model.Customer;
 
 @Entity
 public class Income {
@@ -12,9 +14,11 @@ public class Income {
     @Enumerated(EnumType.STRING)
     private Type type;
 
-    private Long stockId;
+    @OneToOne
+    private Stock stock;
 
-    private  Long customerId;
+    @OneToOne
+    private  Customer customer;
 
     private Double amount;
 
@@ -38,21 +42,7 @@ public class Income {
         this.type = type;
     }
 
-    public Long getStockId() {
-        return stockId;
-    }
 
-    public void setStockId(Long stockId) {
-        this.stockId = stockId;
-    }
-
-    public Long getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
-    }
 
     public Double getAmount() {
         return amount;
