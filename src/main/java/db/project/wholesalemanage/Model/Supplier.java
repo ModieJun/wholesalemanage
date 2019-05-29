@@ -1,9 +1,7 @@
 package db.project.wholesalemanage.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Supplier {
@@ -13,6 +11,9 @@ public class Supplier {
 
     private String name;
     private String Address;
+
+    @OneToMany(mappedBy = "stock_id")
+    private Set<Stock> stock;
 
     public Long getId() {
         return id;
@@ -38,17 +39,11 @@ public class Supplier {
         Address = address;
     }
 
-    public Long getStockId() {
-        return stockId;
+    public Set<Stock> getStock() {
+        return stock;
     }
 
-    public void setStockId(Long stockId) {
-        this.stockId = stockId;
+    public void setStock(Set<Stock> stock) {
+        this.stock = stock;
     }
-
-    private Long stockId;
-
-
-
-
 }

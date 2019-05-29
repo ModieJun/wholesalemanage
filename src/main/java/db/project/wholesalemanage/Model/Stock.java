@@ -1,9 +1,6 @@
 package db.project.wholesalemanage.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Stock {
@@ -15,6 +12,10 @@ public class Stock {
     private String name;
 
     private Long quantinty;
+
+    @ManyToOne
+    @JoinColumn(name = "supplier_id")
+    private Supplier supplier;
 
     public Long getId() {
         return id;
