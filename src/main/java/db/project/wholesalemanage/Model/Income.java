@@ -2,8 +2,6 @@ package db.project.wholesalemanage.Model;
 
 import javax.persistence.*;
 import java.sql.Date;
-import db.project.wholesalemanage.Model.Stock;
-import db.project.wholesalemanage.Model.Customer;
 
 @Entity
 public class Income {
@@ -15,9 +13,11 @@ public class Income {
     private Type type;
 
     @OneToOne
+    @JoinColumn(name = "stock_id")
     private Stock stock;
 
     @OneToOne
+    @JoinColumn(name = "customer_id")
     private  Customer customer;
 
     private Double amount;
@@ -42,7 +42,21 @@ public class Income {
         this.type = type;
     }
 
+    public Stock getStock() {
+        return stock;
+    }
 
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     public Double getAmount() {
         return amount;

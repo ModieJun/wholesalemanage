@@ -2,8 +2,6 @@ package db.project.wholesalemanage.Model;
 
 import javax.persistence.*;
 import java.sql.Date;
-import db.project.wholesalemanage.Model.Stock;
-import db.project.wholesalemanage.Model.Supplier;
 
 @Entity
 public class Expense {
