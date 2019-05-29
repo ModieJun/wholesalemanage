@@ -32,8 +32,8 @@ public class CustomerController {
     @PostMapping("/customer/add")
     private String addCustomer(@ModelAttribute Customer customer) {
         if (customerService.addNewCustomer(customer)) {
-            return "failure";
+            return "success";
         }
-        return "success";
+        return "failure";
     }
 }
