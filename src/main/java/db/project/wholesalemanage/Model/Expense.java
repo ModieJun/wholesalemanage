@@ -1,10 +1,9 @@
 package db.project.wholesalemanage.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
+import db.project.wholesalemanage.Model.Stock;
+import db.project.wholesalemanage.Model.Supplier;
 
 @Entity
 public class Expense {
@@ -12,9 +11,13 @@ public class Expense {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private Long stockId;
+    @OneToOne()
+    @JoinColumn(name = "stock_id")
+    private Stock stock;
 
-    private Long supplierId;
+    @OneToOne
+    @JoinColumn(name = "supplier_id")
+    private Supplier supplier;
 
     private Long quantity;
 
@@ -30,20 +33,20 @@ public class Expense {
         this.id = id;
     }
 
-    public Long getStockId() {
-        return stockId;
+    public Stock getStock() {
+        return stock;
     }
 
-    public void setStockId(Long stockId) {
-        this.stockId = stockId;
+    public void setStock(Stock stock) {
+        this.stock = stock;
     }
 
-    public Long getSupplierId() {
-        return supplierId;
+    public Supplier getSupplier() {
+        return supplier;
     }
 
-    public void setSupplierId(Long supplierId) {
-        this.supplierId = supplierId;
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
     }
 
     public Long getQuantity() {
