@@ -12,8 +12,8 @@ public class Supplier {
     private String name;
     private String Address;
 
-    @OneToMany(mappedBy = "stock_id")
-    private Set<Stock> stock;
+    @OneToMany(mappedBy = "supplierId")
+    private Set<Stock> stocks;
 
     public Long getId() {
         return id;
@@ -40,10 +40,10 @@ public class Supplier {
     }
 
     public Set<Stock> getStock() {
-        return stock;
+        return stocks;
     }
 
     public void setStock(Set<Stock> stock) {
-        this.stock = stock;
+        this.stocks = stock;
     }
 }

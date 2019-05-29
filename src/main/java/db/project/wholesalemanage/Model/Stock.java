@@ -15,7 +15,7 @@ public class Stock {
 
     @ManyToOne
     @JoinColumn(name = "supplier_id")
-    private Supplier supplier;
+    private Supplier supplierId;
 
     public Long getId() {
         return id;
