@@ -21,13 +21,4 @@ public class homeController {
         return "home";
     }
 
-    @PostMapping("/stock/add")
-    public String addStock(@ModelAttribute Stock stock){
-        if (stockService.addNewStock(stock)) {
-            return "success";
-        }
-        return "home";
-
-    }
-
 }
