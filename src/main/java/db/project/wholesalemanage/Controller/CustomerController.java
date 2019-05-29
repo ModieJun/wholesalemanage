@@ -4,6 +4,7 @@ import db.project.wholesalemanage.Model.Customer;
 import db.project.wholesalemanage.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +16,8 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping("/customer")
-    private String home() {
+    private String home(Model model) {
+        model.addAttribute(new Customer());
         return "customer";
     }
 
