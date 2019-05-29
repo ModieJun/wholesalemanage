@@ -11,11 +11,9 @@
 
 <div>
     <!--/*@thymesVar id="stock" type="db.project.wholesalemanage.Model.Stock"*/-->
-    <form action="#" th:action="@{/stock/add}" method="post" th:object="${stock}">
+    <form action="#" th:action="@{/customer/add}" method="post" th:object="${customer}">
         <p><label>Name: </label><input type="text" th:field="*{name}"></p>
-        <p><label>Quantity:</label><input type="number" th:field="*{quantinty}"></p>
-        <p><label>Cost Price:</label> <input type="number" th:field="*{costPrice}" ></p>
-        <p><label>Selling Price:</label> <input type="number" th:field="*{sellingPrice}"></p>
+        <p><label>Quantity:</label><input type="text" th:field="*{address}"></p>
         <input type="submit" value="Submit">
     </form>
 </div>
