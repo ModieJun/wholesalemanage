@@ -21,11 +21,12 @@ public class StockServiceImpl implements StockService {
         return true;
     }
 
+    //TODO
     @Override
     public void UpdateStock(Stock stock) {
 
     }
-
+    //TODO
     @Override
     public Iterable<Stock> getEmergencyStocks() {
         return null;
