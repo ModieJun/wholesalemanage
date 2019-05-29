@@ -18,7 +18,7 @@ public class StockController {
     @GetMapping("/stock")
     public String homeStock(Model model) {
         model.addAttribute("stocks",stockService.getAll());
-        return "stocks";
+        return "stock";
     }
 
     @PostMapping("/stock/add")
@@ -32,7 +32,7 @@ public class StockController {
     @GetMapping("/stock/emergency")
     public String getEmergency(Model model) {
         model.addAttribute("stocks",stockService.getEmergencyStocks());
-        return "stocks";
+        return "stock";
     }
 
 

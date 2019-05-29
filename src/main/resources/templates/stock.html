@@ -13,7 +13,6 @@
     <table>
         <tr th:each="Stock: ${stocks}">
             <!--/*@thymesVar id="stock" type="db.project.wholesalemanage.Model.Stock"*/-->
-            <td th:text="${stock.id}"></td>
             <td th:text="${stock.name}"></td>
             <td th:text="${stock.quantinty}"></td>
             <td th:text="${stock.costPrice}"></td>
