@@ -36,4 +36,11 @@ public class StockServiceImpl implements StockService {
     public Iterable<Stock> getAll() {
         return stockRepo.findAll();
     }
+
+    @Override
+    public Stock getStock(String stockName) {
+        Stock stock = stockRepo.findByName(stockName);
+
+        return stock;
+    }
 }

@@ -10,4 +10,6 @@ public interface StockService {
     Iterable<Stock> getEmergencyStocks();
 
     Iterable<Stock> getAll();
+
+    Stock getStock(String stockName);
 }
