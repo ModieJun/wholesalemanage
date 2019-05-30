@@ -18,5 +18,15 @@
     </form>
 </div>
 
+<div th:if="${customers}">
+    <table>
+        <tr th:each="customer: ${customers}">
+            <td th:text="${customer.name}"></td>
+            <td th:text="${customer.address}"></td>
+        </tr>
+    </table>
+</div>
+
+
 </body>
 </html>

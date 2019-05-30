@@ -20,6 +20,12 @@ public class StockController {
         return "stock";
     }
 
+    @GetMapping("/all")
+    public  String allstock(Model model) {
+        model.addAttribute("stocks",stockService.getAll());
+        return "stock";
+    }
+
     @GetMapping("/{stockname}")
     public String stockInfo(@PathVariable String stockname,Model model) {
         Stock stock = stockService.getStock(stockname);

@@ -23,6 +23,12 @@ public class CustomerController {
         return "customer";
     }
 
+    @GetMapping("/all")
+    public String allCustomers(Model model) {
+        model.addAttribute("customers",customerService.getAll());
+        return "customer";
+    }
+
 
     /*
     *       Post mappings
