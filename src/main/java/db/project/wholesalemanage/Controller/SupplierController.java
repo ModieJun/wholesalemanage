@@ -19,6 +19,11 @@ public class SupplierController {
         return "supplier";
     }
 
+    @GetMapping()
+    public String allSupplier(Model model) {
+        model.addAttribute("suppliers",supplierService.getAll());
+        return "supplier";
+    }
     @GetMapping("/add")
     public String addSupplierPage(Model model) {
         model.addAttribute("supplier",new Supplier());

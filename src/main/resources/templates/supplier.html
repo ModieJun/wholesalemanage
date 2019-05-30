@@ -9,5 +9,34 @@
     <h1>Supplier</h1>
 </div>
 
+<div>
+    <h2>Search Supplier</h2>
+    <form id="supplierquery" action="" th:action="@{/supplier/suppliername}">
+        <label >Suppliername</label>
+        <input type="text">
+        <input type="submit" value="Submit" name="suppliername">
+    </form>
+    <script !src="">
+        <!--        Function used to append the emergency quantity to the uri -->
+        function yourFunction(){
+            var action_src = "/supplier/" + document.getElementsByName("suppliername")[0].value;
+            var your_form = document.getElementById('supplierquery');
+            your_form.action = action_src ;
+        }
+    </script>
+
+</div>
+
+<div th:if="${suppliers}">
+    <h2>Suppliers</h2>
+    <table>
+        <tr th:each="supplier: ${suppliers}">
+            <td th:text="${supplier.name}"></td>
+            <td th:text="${supplier.address}"></td>
+            <td th:text="${supplier.stock}"></td>
+        </tr>
+    </table>
+</div>
+
 </body>
 </html>
