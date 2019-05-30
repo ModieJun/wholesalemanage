@@ -14,7 +14,7 @@
     <!--/*@thymesVar id="stock" type="db.project.wholesalemanage.Model.Stock"*/-->
     <form action="#" th:action="@{/stock/add}" method="post" th:object="${stock}">
         <p><label>Name: </label><input type="text" th:field="*{name}"></p>
-        <p><label>Quantity:</label><input type="number" th:field="*{quantinty}"></p>
+        <p><label>Quantity:</label><input type="number" th:field="*{quantity}"></p>
         <p><label>Cost Price:</label> <input type="number" th:field="*{costPrice}" ></p>
         <p><label>Selling Price:</label> <input type="number" th:field="*{sellingPrice}"></p>
         <input type="submit" value="Submit">
@@ -30,7 +30,7 @@
             <tr >
                 <!--/*@thymesVar id="stock" type="db.project.wholesalemanage.Model.Stock"*/-->
                 <td th:text="${stock.name}"></td>
-                <td th:text="${stock.quantinty}"></td>
+                <td th:text="${stock.quantity}"></td>
                 <td th:text="${stock.costPrice}"></td>
                 <td th:text="${stock.sellingPrice}"></td>
             </tr>
@@ -42,21 +42,39 @@
 <div th:if="${stockinfo}">
     <h2>Stock info</h2>
     <p th:text="${stockinfo.name}"></p>
-    <p th:text="${stockinfo.quantinty}"></p>
+    <p th:text="${stockinfo.quantity}"></p>
     <p th:text="${stockinfo.costPrice}"></p>
     <p th:text="${stockinfo.sellingPrice}"></p>
 </div>
 
 
+<div>
+    <h3>Get Emergency Stock</h3>
+    <form id="emergencyQuery"action="" th:action="@{/stock/emergency/}" method="get" onsubmit="yourFunction()">
+        <br>
+        <p>Stock quantitiy under:</p>
+        <input type="number" name="quantity">
+        <input type="submit" value="Submit">
+    </form>
+    <script !src="">
+<!--        Function used to append the emergency quantity to the uri -->
+        function yourFunction(){
+            var action_src = "/stock/emergency/" + document.getElementsByName("quantity")[0].value;
+            var your_form = document.getElementById('emergencyQuery');
+            your_form.action = action_src ;
+        }
+    </script>
+</div>
+
 <!--Emergency Stock-->
-<div th:if="${emergencystock}">
+<div th:if="${emergencystocks}">
     <h2>Emergency Stocks</h2>
     <table>
         <th:block th:each="stock: ${emergencystocks}">
             <tr >
                 <!--/*@thymesVar id="stock" type="db.project.wholesalemanage.Model.Stock"*/-->
                 <td th:text="${stock.name}"></td>
-                <td th:text="${stock.quantinty}"></td>
+                <td th:text="${stock.quantity}"></td>
                 <td th:text="${stock.costPrice}"></td>
                 <td th:text="${stock.sellingPrice}"></td>
             </tr>
