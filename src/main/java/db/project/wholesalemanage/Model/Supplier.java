@@ -12,8 +12,9 @@ public class Supplier {
     private String name;
     private String Address;
 
-    @OneToMany(mappedBy = "supplierId")
-    private Set<Stock> stocks;
+    @OneToOne
+    @JoinColumn(name="stock_id" ,nullable=true, insertable=true, updatable=true)
+    private Stock stock;
 
     public Long getId() {
         return id;
@@ -39,11 +40,11 @@ public class Supplier {
         Address = address;
     }
 
-    public Set<Stock> getStock() {
-        return stocks;
+    public Stock getStock() {
+        return stock;
     }
 
-    public void setStock(Set<Stock> stock) {
-        this.stocks = stock;
+    public void setStock(Stock stock) {
+        this.stock = stock;
     }
 }
