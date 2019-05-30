@@ -8,7 +8,7 @@
 <div>
     <h1>Stocks</h1>
 </div>
-
+<!--Adding Stock form-->
 <div  th:if="${stock}">
     <h2>Add Stock</h2>
     <!--/*@thymesVar id="stock" type="db.project.wholesalemanage.Model.Stock"*/-->
@@ -22,7 +22,7 @@
 </div>
 
 
-
+<!--All Stocks-->
 <div th:if="${stocks}">
     <h2>Show Stocks</h2>
     <table>
@@ -36,6 +36,33 @@
             </tr>
         </th:block>
     </table>
+</div>
+
+<!--Stock Info-->
+<div th:if="${stockinfo}">
+    <h2>Stock info</h2>
+    <p th:text="${stockinfo.name}"></p>
+    <p th:text="${stockinfo.quantinty}"></p>
+    <p th:text="${stockinfo.costPrice}"></p>
+    <p th:text="${stockinfo.sellingPrice}"></p>
+</div>
+
+
+<!--Emergency Stock-->
+<div th:if="${emergencystock}">
+    <h2>Emergency Stocks</h2>
+    <table>
+        <th:block th:each="stock: ${emergencystocks}">
+            <tr >
+                <!--/*@thymesVar id="stock" type="db.project.wholesalemanage.Model.Stock"*/-->
+                <td th:text="${stock.name}"></td>
+                <td th:text="${stock.quantinty}"></td>
+                <td th:text="${stock.costPrice}"></td>
+                <td th:text="${stock.sellingPrice}"></td>
+            </tr>
+        </th:block>
+    </table>
+
 </div>
 
 </body>

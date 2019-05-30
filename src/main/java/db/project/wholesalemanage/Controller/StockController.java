@@ -21,10 +21,10 @@ public class StockController {
     }
 
     @GetMapping("/{stockname}")
-    public String stockInfo(@PathVariable String stockName) {
-        Stock stock = stockService.getStock(stockName);
-
-        return "stockinfo";
+    public String stockInfo(@PathVariable String stockname,Model model) {
+        Stock stock = stockService.getStock(stockname);
+        model.addAttribute("stockinfo",stock);
+        return "stock";
     }
 
     @PostMapping("/add")
