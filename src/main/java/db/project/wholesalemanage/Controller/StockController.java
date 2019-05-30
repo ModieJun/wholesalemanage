@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -19,6 +20,13 @@ public class StockController {
     public String homeStock(Model model) {
         model.addAttribute("stocks",stockService.getAll());
         return "stock";
+    }
+
+    @GetMapping("/stock/{stockname}")
+    public String stockInfo(@PathVariable String stockName) {
+        Stock stock = stockService.getStock(stockName);
+
+        return "stockinfo";
     }
 
     @PostMapping("/stock/add")
