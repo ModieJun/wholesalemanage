@@ -17,7 +17,7 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @GetMapping("/")
+    @GetMapping()
     public String home(Model model) {
         model.addAttribute(new Customer());
         return "customer";

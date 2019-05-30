@@ -24,7 +24,7 @@ public class StockServiceImpl implements StockService {
     //TODO
     @Override
     public void UpdateStock(Stock stock) {
-
+        stockRepo.save(stock);
     }
     //TODO
     @Override
