@@ -35,9 +35,9 @@ public class StockController {
         return "failure";
     }
 
-    @GetMapping("/emergency")
-    public String getEmergency(Model model) {
-        model.addAttribute("stocks",stockService.getEmergencyStocks());
+    @GetMapping("/emergency/{amount}")
+    public String getEmergency(Model model,@PathVariable Long amount) {
+        model.addAttribute("emergencystocks",stockService.getEmergencyStocks(amount));
         return "stock";
     }
 

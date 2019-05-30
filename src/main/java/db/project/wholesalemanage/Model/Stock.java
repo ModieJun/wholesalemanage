@@ -11,7 +11,7 @@ public class Stock {
 
     private String name;
 
-    private Long quantinty;
+    private Long quantity;
 
     @ManyToOne
     @JoinColumn(name = "supplier_id")
@@ -36,12 +36,12 @@ public class Stock {
         this.name = name;
     }
 
-    public Long getQuantinty() {
-        return quantinty;
+    public Long getQuantity() {
+        return quantity;
     }
 
-    public void setQuantinty(Long quantinty) {
-        this.quantinty = quantinty;
+    public void setQuantity(Long quantity) {
+        this.quantity = quantity;
     }
 
     public Supplier getSupplierId() {

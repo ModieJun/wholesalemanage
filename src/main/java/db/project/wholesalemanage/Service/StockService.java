@@ -7,7 +7,7 @@ public interface StockService {
 
     void UpdateStock(Stock stock);
 
-    Iterable<Stock> getEmergencyStocks();
+    Iterable<Stock> getEmergencyStocks(Long amount);
 
     Iterable<Stock> getAll();
 

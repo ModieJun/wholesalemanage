@@ -28,8 +28,8 @@ public class StockServiceImpl implements StockService {
     }
     //TODO
     @Override
-    public Iterable<Stock> getEmergencyStocks() {
-        return null;
+    public Iterable<Stock> getEmergencyStocks(Long amount) {
+        return stockRepo.findAllByQuantityIsLessThan(amount);
     }
 
     @Override
