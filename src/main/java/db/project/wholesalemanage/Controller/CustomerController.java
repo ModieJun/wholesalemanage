@@ -8,15 +8,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/customer")
 public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
 
-    @GetMapping("/customer")
-    private String home(Model model) {
+    @GetMapping("/")
+    public String home(Model model) {
         model.addAttribute(new Customer());
         return "customer";
     }
@@ -29,8 +31,8 @@ public class CustomerController {
      */
 
 
-    @PostMapping("/customer/add")
-    private String addCustomer(@ModelAttribute Customer customer) {
+    @PostMapping("/add")
+    public String addCustomer(@ModelAttribute Customer customer) {
         if (customerService.addNewCustomer(customer)) {
             return "success";
         }

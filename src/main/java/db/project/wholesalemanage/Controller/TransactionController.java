@@ -18,7 +18,7 @@ public class TransactionController {
     @Autowired
     private TransactionService transactionService;
 
-    @GetMapping("/")
+    @GetMapping()
     public String transactionHome() {
         return "transaction";
     }

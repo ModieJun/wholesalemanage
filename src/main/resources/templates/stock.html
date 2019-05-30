@@ -2,14 +2,29 @@
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Emergency Stocks</title>
+    <title>Stocks</title>
 </head>
 <body>
 <div>
-    <h1>Emergency Stocks</h1>
+    <h1>Stocks</h1>
 </div>
 
-<div>
+<div  th:if="${stock}">
+    <h2>Add Stock</h2>
+    <!--/*@thymesVar id="stock" type="db.project.wholesalemanage.Model.Stock"*/-->
+    <form action="#" th:action="@{/stock/add}" method="post" th:object="${stock}">
+        <p><label>Name: </label><input type="text" th:field="*{name}"></p>
+        <p><label>Quantity:</label><input type="number" th:field="*{quantinty}"></p>
+        <p><label>Cost Price:</label> <input type="number" th:field="*{costPrice}" ></p>
+        <p><label>Selling Price:</label> <input type="number" th:field="*{sellingPrice}"></p>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+
+
+<div th:if="${stocks}">
+    <h2>Show Stocks</h2>
     <table>
         <th:block th:each="stock: ${stocks}">
             <tr >

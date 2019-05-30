@@ -5,31 +5,29 @@ import db.project.wholesalemanage.Service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/stock")
 public class StockController {
 
     @Autowired
     private StockService stockService;
 
-    @GetMapping("/stock")
+    @GetMapping()
     public String homeStock(Model model) {
-        model.addAttribute("stocks",stockService.getAll());
+        model.addAttribute("stock",new Stock());
         return "stock";
     }
 
-    @GetMapping("/stock/{stockname}")
+    @GetMapping("/{stockname}")
     public String stockInfo(@PathVariable String stockName) {
         Stock stock = stockService.getStock(stockName);
 
         return "stockinfo";
     }
 
-    @PostMapping("/stock/add")
+    @PostMapping("/add")
     public String addStock(@ModelAttribute Stock stock) {
         if (stockService.addNewStock(stock)) {
             return "success";
@@ -37,7 +35,7 @@ public class StockController {
         return "failure";
     }
 
-    @GetMapping("/stock/emergency")
+    @GetMapping("/emergency")
     public String getEmergency(Model model) {
         model.addAttribute("stocks",stockService.getEmergencyStocks());
         return "stock";
