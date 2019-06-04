@@ -12,9 +12,6 @@ public class Supplier {
     private String name;
     private String Address;
 
-    @OneToOne
-    @JoinColumn(name="stock_id" ,nullable=true, insertable=true, updatable=true)
-    private Stock stock;
 
     public Long getId() {
         return id;
