@@ -37,11 +37,4 @@ public class Supplier {
         Address = address;
     }
 
-    public Stock getStock() {
-        return stock;
-    }
-
-    public void setStock(Stock stock) {
-        this.stock = stock;
-    }
 }
