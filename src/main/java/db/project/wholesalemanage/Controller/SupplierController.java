@@ -1,5 +1,6 @@
 package db.project.wholesalemanage.Controller;
 
+import db.project.wholesalemanage.Model.Stock;
 import db.project.wholesalemanage.Model.Supplier;
 import db.project.wholesalemanage.Service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class SupplierController {
         return "supplier";
     }
 
-    @GetMapping()
+    @GetMapping("/all")
     public String allSupplier(Model model) {
         model.addAttribute("suppliers",supplierService.getAll());
         return "supplier";
@@ -42,12 +43,14 @@ public class SupplierController {
     * */
 
     @PostMapping("/add")
-    public  String addSupplier(@ModelAttribute Supplier supplier) {
-        if (supplierService.addNewSupplier(supplier)) {
+    public  String addSupplier(@ModelAttribute("supplier") Supplier supplier,@ModelAttribute("stock") Stock stock ) {
+        System.err.println("stockname: " + stock.getName());
+        System.err.println(supplier.getName());
+        if (supplierService.addNewSupplier(supplier,stock.getName())) {
 
-            return "supplier";
+            return "success";
         }
 
-        return "supplier";
+        return "failure";
     }
 }

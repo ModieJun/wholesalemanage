@@ -4,6 +4,6 @@ import db.project.wholesalemanage.Model.Supplier;
 
 public interface SupplierService {
     Iterable<Supplier> getAll();
-    Boolean addNewSupplier(Supplier supplier);
+    Boolean addNewSupplier(Supplier supplier,String stockname);
     Supplier getSupplierByName(String name);
 }

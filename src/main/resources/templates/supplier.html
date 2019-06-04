@@ -7,6 +7,23 @@
 <body>
 <div>
     <h1>Supplier</h1>
+    <div th:if="!${supplier}">
+        <p>Add supplier <a href="/supplier/add">here</a></p>
+    </div>
+</div>
+
+<!--Todo: Stock and Supplier using two inputs-->
+<div th:if="${supplier}">
+    <h2>Add supplier</h2>
+    <form action="#" th:action="@{/supplier/add}" method="post" >
+        <!--/*@thymesVar id="supplier" type="db.project.wholesalemanage.Model.Supplier"*/-->
+        <div th:object="${supplier}">
+            <label>Name: <input type="text" id="suppliername" name="suppliername" th:field="*{name}"></label>
+            <label>Address: <input type="text" name="supplieraddress" th:field="*{address}"></label>
+        </div>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
 </div>
 
 <div>
@@ -14,6 +31,7 @@
     <form id="supplierquery" action="" th:action="@{/supplier/suppliername}">
         <label >Suppliername</label>
         <input type="text">
+        <br>
         <input type="submit" value="Submit" name="suppliername">
     </form>
     <script !src="">
@@ -24,7 +42,6 @@
             your_form.action = action_src ;
         }
     </script>
-
 </div>
 
 <div th:if="${suppliers}">
