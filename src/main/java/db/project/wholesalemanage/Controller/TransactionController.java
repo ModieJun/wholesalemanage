@@ -2,10 +2,13 @@ package db.project.wholesalemanage.Controller;
 
 import db.project.wholesalemanage.Model.Expense;
 import db.project.wholesalemanage.Model.Income;
+import db.project.wholesalemanage.Model.Stock;
+import db.project.wholesalemanage.Model.Supplier;
 import db.project.wholesalemanage.Service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,15 +22,12 @@ public class TransactionController {
     private TransactionService transactionService;
 
     @GetMapping()
-    public String transactionHome() {
-        return "transaction";
-    }
+    public String transactionHome() {return "transaction"; }
 
     @GetMapping("/all")
     public String allTransaction(Model model) {
         model.addAttribute("expenses",transactionService.getAllExpense());
         model.addAttribute("incomes",transactionService.getAllIncome());
-
         return  "transaction";
     }
 
@@ -46,13 +46,13 @@ public class TransactionController {
     @GetMapping("/income/add")
     public String addIncomePage(Model model) {
         model.addAttribute("income",new Income());
-        return"income";
+        return"transaction";
     }
 
     @GetMapping("/expense/add")
     public String addExpensePage(Model model) {
         model.addAttribute("expense",new Expense());
-        return "expense";
+        return "transaction";
     }
 
 
@@ -69,7 +69,8 @@ public class TransactionController {
 
     @PostMapping("/income/add")
     public String addIncome(@ModelAttribute Income income) {
+//        System.out.println(income.getType().getCode().toString());
         transactionService.addNewIncome(income);
-        return "income";
+        return "transaction";
     }
 }

@@ -9,13 +9,11 @@ public class Expense {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne()
-    @JoinColumn(name = "stock_id")
-    private Stock stock;
 
-    @OneToOne
-    @JoinColumn(name = "supplier_id")
-    private Supplier supplier;
+    private String stock_name;
+
+
+    private String supplier_name;
 
     private Long quantity;
 
@@ -31,20 +29,20 @@ public class Expense {
         this.id = id;
     }
 
-    public Stock getStock() {
-        return stock;
+    public String getStock_name() {
+        return stock_name;
     }
 
-    public void setStock(Stock stock) {
-        this.stock = stock;
+    public void setStock_name(String stock_name) {
+        this.stock_name = stock_name;
     }
 
-    public Supplier getSupplier() {
-        return supplier;
+    public String getSupplier_name() {
+        return supplier_name;
     }
 
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
+    public void setSupplier_name(String supplier_name) {
+        this.supplier_name = supplier_name;
     }
 
     public Long getQuantity() {
