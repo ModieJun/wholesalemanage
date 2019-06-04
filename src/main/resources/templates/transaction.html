@@ -7,14 +7,47 @@
 <body>
 <div>
     <h1>Transactions</h1>
+    <h2><a href="/">Home</a></h2>
 </div>
 
 <div>
-    Income
+    <h1>Income</h1>
+    <div th:if="!${income}">
+        <p>Add Income <a href="/transaction/income/add">here</a></p>
+    </div>
+
+    <div th:if="${income}">
+        <form action="" th:action="@{/transaction/income/add}" method="post"  th:object="${income}">
+            <label>Type: <select name="typeofIncome" th:field="*{type}">
+                <!--/*@thymesVar id="Type" type="db.project.wholesalemanage.Model.Type"*/-->
+                <option th:each="type: ${T(db.project.wholesalemanage.Model.Type).values()}" th:value="${type}" th:text="${type}"></option>
+            </select></label>
+
+            <label>Stock: <input type="text" th:field="*{stock_name}"></label>
+            <label>Customer: <input type="text" th:field="*{customer_name}"></label>
+            <label>Amount: <input type="number" th:field="*{amount}"></label>
+            <label>Quantity: <input type="number" th:field="*{quantity}"></label>
+            <label>Date: <input type="date" th:field="*{date}"></label>
+            <br>
+            <input type="submit" value="submit">
+        </form>
+    </div>
+
+
 </div>
 
 <div>
-    Expense
+    <h1>Expense</h1>
+    <div th:if="!${expense}">
+        <p>Add Expense <a href="/transaction/expense/add">here</a></p>
+    </div>
+
+    <div th:object="${expense}">
+        <form action=""  th:action="@{/transaction/expense/add}" method="get" th:object="${expense}">
+
+        </form>
+    </div>
+
 </div>
 
 
