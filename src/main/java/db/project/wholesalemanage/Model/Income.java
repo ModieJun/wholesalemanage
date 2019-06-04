@@ -12,13 +12,11 @@ public class Income {
     @Enumerated(EnumType.STRING)
     private Type type;
 
-    @OneToOne
-    @JoinColumn(name = "stock_id")
-    private Stock stock;
 
-    @OneToOne
-    @JoinColumn(name = "customer_id")
-    private  Customer customer;
+    private String stock_name;
+
+
+    private  String customer_name;
 
     private Double amount;
 
@@ -42,20 +40,20 @@ public class Income {
         this.type = type;
     }
 
-    public Stock getStock() {
-        return stock;
+    public String getStock_name() {
+        return stock_name;
     }
 
-    public void setStock(Stock stock) {
-        this.stock = stock;
+    public void setStock_name(String stock_name) {
+        this.stock_name = stock_name;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public String getCustomer_name() {
+        return customer_name;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomer_name(String customer_name) {
+        this.customer_name = customer_name;
     }
 
     public Double getAmount() {
