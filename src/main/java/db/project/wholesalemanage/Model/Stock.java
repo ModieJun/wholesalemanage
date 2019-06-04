@@ -13,9 +13,7 @@ public class Stock {
 
     private Long quantity;
 
-    @ManyToOne
-    @JoinColumn(name = "supplier_id")
-    private Supplier supplierId;
+
 
     private Double costPrice;
     private Double sellingPrice;
@@ -42,14 +40,6 @@ public class Stock {
 
     public void setQuantity(Long quantity) {
         this.quantity = quantity;
-    }
-
-    public Supplier getSupplierId() {
-        return supplierId;
-    }
-
-    public void setSupplierId(Supplier supplierId) {
-        this.supplierId = supplierId;
     }
 
     public Double getCostPrice() {
