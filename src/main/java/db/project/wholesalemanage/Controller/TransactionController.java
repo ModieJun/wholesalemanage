@@ -71,6 +71,6 @@ public class TransactionController {
     public String addIncome(@ModelAttribute Income income) {
 //        System.out.println(income.getType().getCode().toString());
         transactionService.addNewIncome(income);
-        return "redirect:/transaction";
+        return "redirect:/transaction?incomeadded=true";
     }
 }
