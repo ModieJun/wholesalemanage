@@ -64,13 +64,13 @@ public class TransactionController {
     @PostMapping("/expense/add")
     public String addExpense(@ModelAttribute Expense expense) {
         transactionService.addNewExpense(expense);
-        return "expense";
+        return "redirect:/transaction?expenseadd=true";
     }
 
     @PostMapping("/income/add")
     public String addIncome(@ModelAttribute Income income) {
 //        System.out.println(income.getType().getCode().toString());
         transactionService.addNewIncome(income);
-        return "transaction";
+        return "redirect:/transaction";
     }
 }

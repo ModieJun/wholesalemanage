@@ -15,6 +15,9 @@
     <div th:if="!${income}">
         <p>Add Income <a href="/transaction/income/add">here</a></p>
     </div>
+    <div th:if="${param.incomeadded}">
+        <h2>Income Added</h2>
+    </div>
 
     <div th:if="${income}">
         <form action="" th:action="@{/transaction/income/add}" method="post"  th:object="${income}">
@@ -40,6 +43,9 @@
     <h1>Expense</h1>
     <div th:if="!${expense}">
         <p>Add Expense <a href="/transaction/expense/add">here</a></p>
+    </div>
+    <div th:if="${param.expenseadd}">
+        <h2>ExpenseAdded</h2>
     </div>
 
     <div th:if="${expense}">
