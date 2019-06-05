@@ -55,6 +55,15 @@ public class TransactionController {
         return "transaction";
     }
 
+    /*
+        @ProftCalculation
+            Calculate the profit to date
+     */
+    @GetMapping("/profit")
+    public String profitCalc(){
+        return "profit";
+    }
+
 
     /*
     *   Post mappings
