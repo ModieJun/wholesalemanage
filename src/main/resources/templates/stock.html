@@ -9,6 +9,7 @@
     <h1>Stocks</h1>
     <h2><a href="/">Home</a></h2>
 </div>
+<br>
 <!--Adding Stock form-->
 <div  th:if="${stock}">
     <h2>Add Stock</h2>
@@ -22,10 +23,15 @@
     </form>
 </div>
 
-
+<br>
+<div th:if="!${stocks}">
+    <h2>View All Stocks</h2>
+    <p><a href="/stock/all">View</a></p>
+</div>
 <!--All Stocks-->
 <div th:if="${stocks}">
     <h2>Show Stocks</h2>
+    <br>
     <table>
         <thead>
             <th>Stock</th>
