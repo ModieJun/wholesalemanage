@@ -7,7 +7,7 @@ public class Stock {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long stockid;
 
     private String name;
 
@@ -18,12 +18,12 @@ public class Stock {
     private Double costPrice;
     private Double sellingPrice;
 
-    public Long getId() {
-        return id;
+    public Long getStockid() {
+        return stockid;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setStockid(Long stockid) {
+        this.stockid = stockid;
     }
 
     public String getName() {

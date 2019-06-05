@@ -7,7 +7,7 @@ import java.sql.Date;
 public class Income {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private  Long id;
+    private  Long incomeid;
 
     @Enumerated(EnumType.STRING)
     private Type type;
@@ -24,12 +24,12 @@ public class Income {
 
     private Date date;
 
-    public Long getId() {
-        return id;
+    public Long getIncomeid() {
+        return incomeid;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIncomeid(Long incomeid) {
+        this.incomeid = incomeid;
     }
 
     public Type getType() {

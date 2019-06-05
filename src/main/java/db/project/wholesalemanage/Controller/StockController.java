@@ -26,8 +26,8 @@ public class StockController {
         return "stock";
     }
 
-    @GetMapping("/{stockname}")
-    public String stockInfo(@PathVariable String stockname,Model model) {
+    @GetMapping("/find")
+    public String stockInfo(@RequestParam String stockname,Model model) {
         Stock stock = stockService.getStock(stockname);
         model.addAttribute("stockinfo",stock);
         return "stock";
@@ -41,9 +41,9 @@ public class StockController {
         return "failure";
     }
 
-    @GetMapping("/emergency/{amount}")
-    public String getEmergency(Model model,@PathVariable Long amount) {
-        model.addAttribute("emergencystocks",stockService.getEmergencyStocks(amount));
+    @GetMapping("/emergency")
+    public String getEmergency(Model model,@RequestParam Long quantity) {
+        model.addAttribute("emergencystocks",stockService.getEmergencyStocks(quantity));
         return "stock";
     }
 

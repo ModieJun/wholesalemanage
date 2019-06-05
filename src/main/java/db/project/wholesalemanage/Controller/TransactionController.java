@@ -34,13 +34,13 @@ public class TransactionController {
     @GetMapping("/paid")
     public String paidTransaction(Model model) {
         model.addAttribute("paidtrans",transactionService.getPaidIncome());
-        return "paidtrans";
+        return "transaction";
     }
 
     @GetMapping("/pending")
     public String pendingTransaction(Model model) {
         model.addAttribute("pendingtrans",transactionService.getPendingIncome());
-        return "pending";
+        return "transaction";
     }
 
     @GetMapping("/income/add")

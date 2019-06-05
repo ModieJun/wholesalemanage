@@ -7,7 +7,7 @@ import java.sql.Date;
 public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long expenseId;
 
 
     private String stock_name;
@@ -21,12 +21,12 @@ public class Expense {
 
     private Date date;
 
-    public Long getId() {
-        return id;
+    public Long getExpenseId() {
+        return expenseId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setExpenseId(Long expenseId) {
+        this.expenseId = expenseId;
     }
 
     public String getStock_name() {

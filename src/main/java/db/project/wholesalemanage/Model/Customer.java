@@ -9,17 +9,17 @@ import javax.persistence.Id;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long customerid;
 
     private String name;
     private String address;
 
-    public Long getId() {
-        return id;
+    public Long getCustomerid() {
+        return customerid;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCustomerid(Long customerid) {
+        this.customerid = customerid;
     }
 
     public String getName() {

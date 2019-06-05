@@ -25,7 +25,7 @@
     <div th:if="${income}">
         <form action="" th:action="@{/transaction/income/add}" method="post"  th:object="${income}">
             <label>Type: <select name="typeofIncome" th:field="*{type}">
-                <!--/*@thymesVar id="Type" type="db.project.wholesalemanage.Model.Type"*/-->
+                <!--/*@thymesVar customerid="Type" type="db.project.wholesalemanage.Model.Type"*/-->
                 <option th:each="type: ${T(db.project.wholesalemanage.Model.Type).values()}" th:value="${type}" th:text="${type}"></option>
             </select></label>
 
@@ -37,6 +37,69 @@
             <br>
             <input type="submit" value="submit">
         </form>
+    </div>
+
+    <div>
+        <div>
+            <h2>Show pending</h2>
+            <a href="/transaction/pending">view</a>
+        </div>
+        <div th:if="${pendingtrans}">
+            <table>
+                <thead >
+                    <th>Id</th>
+                    <th>Type</th>
+                    <th>Stock Name</th>
+                    <th>Customer Name</th>
+                    <th>Amount</th>
+                    <th>Quantity</th>
+                    <th>Date</th>
+                </thead>
+                <th:block th:each="trans:${pendingtrans}">
+                    <tr>
+                        <td th:text="${trans.incomeid}"></td>
+                        <td th:text="${trans.type}"></td>
+                        <td th:text="${trans.stock_name}"></td>
+                        <td th:text="${trans.customer_name}"></td>
+                        <td th:text="${trans.amount}"></td>
+                        <td th:text="${trans.quantity}"></td>
+                        <td th:text="${trans.date}"></td>
+                    </tr>
+                </th:block>
+            </table>
+        </div>
+
+        <br>
+        <div>
+            <h2>Show Paid</h2>
+            <a href="/transaction/paid">view</a>
+        </div>
+        <div th:if="${paidtrans}">
+            <table >
+                <thead >
+                    <th>Id</th>
+                    <th>Type</th>
+                    <th>Stock Name</th>
+                    <th>Customer Name</th>
+                    <th>Amount</th>
+                    <th>Quantity</th>
+                    <th>Date</th>
+                </thead>
+                <th:block th:each="trans:${paidtrans}">
+                    <tr>
+                        <td th:text="${trans.customerid}"></td>
+                        <td th:text="${trans.type}"></td>
+                        <td th:text="${trans.stock_name}"></td>
+                        <td th:text="${trans.customer_name}"></td>
+                        <td th:text="${trans.amount}"></td>
+                        <td th:text="${trans.quantity}"></td>
+                        <td th:text="${trans.date}"></td>
+                    </tr>
+                </th:block>
+
+            </table>
+        </div>
+
     </div>
 
 

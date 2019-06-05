@@ -1,24 +1,23 @@
 package db.project.wholesalemanage.Model;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 public class Supplier {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long supplierid;
 
     private String name;
     private String Address;
 
 
-    public Long getId() {
-        return id;
+    public Long getSupplierid() {
+        return supplierid;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setSupplierid(Long supplierid) {
+        this.supplierid = supplierid;
     }
 
     public String getName() {
