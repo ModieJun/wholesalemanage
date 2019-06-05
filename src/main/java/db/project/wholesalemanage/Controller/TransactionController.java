@@ -76,7 +76,7 @@ public class TransactionController {
         if(transactionService.addNewIncome(income)){
             return "redirect:/transaction?incomeadded=true";
         }else{
-            return "redirect:/transaction?incomeerrer=true";
+            return "redirect:/transaction?incomeerror=true";
         }
     }
 }
