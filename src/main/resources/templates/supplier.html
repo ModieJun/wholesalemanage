@@ -48,6 +48,10 @@
 <div th:if="${suppliers}">
     <h2>Suppliers</h2>
     <table>
+        <thead>
+        <th>Name</th>
+        <th>Address</th>
+        </thead>
         <tr th:each="supplier: ${suppliers}">
             <td th:text="${supplier.name}"></td>
             <td th:text="${supplier.address}"></td>
