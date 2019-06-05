@@ -87,7 +87,7 @@
                 </thead>
                 <th:block th:each="trans:${paidtrans}">
                     <tr>
-                        <td th:text="${trans.customerid}"></td>
+                        <td th:text="${trans.incomeid}"></td>
                         <td th:text="${trans.type}"></td>
                         <td th:text="${trans.stock_name}"></td>
                         <td th:text="${trans.customer_name}"></td>
@@ -122,6 +122,7 @@
             <label>Supplier: <input type="text" th:field="*{supplier_name}"></label>
             <label>Amount: <input type="number" th:field="*{amount}"></label>
             <label>Quantity: <input type="number" th:field="*{quantity}"></label>
+            <label>Data: <input type="date"  th:field="*{date}"></label>
             <br>
             <input type="submit" value="submit">
         </form>

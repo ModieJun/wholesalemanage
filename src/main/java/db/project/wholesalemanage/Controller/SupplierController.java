@@ -31,8 +31,8 @@ public class SupplierController {
         return "supplier";
     }
 
-    @GetMapping("/{suppliername}")
-    public String supplierInfo(Model model, @PathVariable String suppliername) {
+    @GetMapping("/find")
+    public String supplierInfo(Model model, @RequestParam String suppliername) {
         Supplier supplier = supplierService.getSupplierByName(suppliername);
         model.addAttribute("supplierinfo",supplier);
         return "supplier";

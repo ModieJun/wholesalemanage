@@ -13,7 +13,6 @@
     </div>
 </div>
 
-<!--Todo: Stock and Supplier using two inputs-->
 <div th:if="${supplier}">
     <h2>Add supplier</h2>
     <form action="#" th:action="@{/supplier/add}" method="post" >
@@ -29,20 +28,18 @@
 
 <div>
     <h2>Search Supplier</h2>
-    <form customerid="supplierquery" action="" th:action="@{/supplier/suppliername}">
+    <form  action="" th:action="@{/supplier/find}">
         <label >Suppliername</label>
-        <input type="text">
+        <input type="text" name="suppliername">
         <br>
-        <input type="submit" value="Submit" name="suppliername">
+        <input type="submit" value="Submit" name="">
     </form>
-    <script !src="">
-        <!--        Function used to append the emergency quantity to the uri -->
-        function yourFunction(){
-            var action_src = "/supplier/" + document.getElementsByName("suppliername")[0].value;
-            var your_form = document.getElementById('supplierquery');
-            your_form.action = action_src ;
-        }
-    </script>
+
+    <div th:if="${supplierinfo}">
+        <h3>Supplier info</h3>
+        <p th:text="${supplierinfo.name}"></p>
+        <p th:text="${supplierinfo.address}"></p>
+    </div>
 </div>
 
 <div th:if="${suppliers}">
