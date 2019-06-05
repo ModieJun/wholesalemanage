@@ -63,14 +63,20 @@ public class TransactionController {
 
     @PostMapping("/expense/add")
     public String addExpense(@ModelAttribute Expense expense) {
-        transactionService.addNewExpense(expense);
-        return "redirect:/transaction?expenseadd=true";
+        if(transactionService.addNewExpense(expense)){
+            return "redirect:/transaction?expenseadd=true";
+        }else{
+            return "redirect:/transaction?expenseerror=true";
+        }
     }
 
     @PostMapping("/income/add")
     public String addIncome(@ModelAttribute Income income) {
 //        System.out.println(income.getType().getCode().toString());
-        transactionService.addNewIncome(income);
-        return "redirect:/transaction?incomeadded=true";
+        if(transactionService.addNewIncome(income)){
+            return "redirect:/transaction?incomeadded=true";
+        }else{
+            return "redirect:/transaction?incomeerrer=true";
+        }
     }
 }

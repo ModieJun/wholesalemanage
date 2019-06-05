@@ -1,5 +1,6 @@
 package db.project.wholesalemanage.Service;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import db.project.wholesalemanage.Model.Expense;
 import db.project.wholesalemanage.Model.Income;
 
@@ -8,9 +9,9 @@ public interface TransactionService {
 
     Iterable<Expense> getAllExpense();
 
-    void addNewIncome(Income income);
+    Boolean addNewIncome(Income income);
 
-    void addNewExpense(Expense expense) ;
+    Boolean addNewExpense(Expense expense) ;
 
     Iterable<Income> getPaidIncome();
 
