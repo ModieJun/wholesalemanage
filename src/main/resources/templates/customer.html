@@ -19,6 +19,10 @@
     </form>
 </div>
 
+<div>
+    <h2>View All Customers</h2>
+    <a href="/customer/all">view</a>
+</div>
 <div th:if="${customers}">
     <table>
         <tr th:each="customer: ${customers}">
@@ -26,6 +30,36 @@
             <td th:text="${customer.address}"></td>
         </tr>
     </table>
+</div>
+
+<div>
+    <h2>Search Customer</h2>
+    <form action="" th:action="@{/customer/find}">
+        <label>Customer name: <input type="text" name="customername" id="customername"></label>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<div th:if="${customerinfo}">
+    <form action="" th:action="@{/customer/edit}" th:method="get">
+        <h3>Customer info</h3>
+        <p th:text="${customerinfo.name}"></p>
+        <p th:text="${customerinfo.address}"></p>
+        <input type="text" name="customername" hidden="true" th:value="${customerinfo.name}">
+        <input type="text" name="customeraddress" hidden="true" th:value="${customerinfo.address}">
+        <br>
+        <input th:if="${customerinfo}" type="submit" value="Edit">
+    </form>
+</div>
+
+<div th:if="${editcustomer}">
+    <h2>Edit Customer Details</h2>
+    <form action="" th:if="${editcustomer}" th:action="@{/customer/update}" th:object="${editcustomer}" th:method="post">
+        <input type="number" hidden th:value="${editcustomer.id}" th:field="*{id}">
+        <p><label>Name: </label><input type="text" th:field="*{name}" th:value="${editcustomer.name}"></p>
+        <p><label>Address:</label><input type="text" th:field="*{address}" th:value="${editcustomer.address}"></p>
+        <input type="submit" value="Submit">
+    </form>
 </div>
 
 

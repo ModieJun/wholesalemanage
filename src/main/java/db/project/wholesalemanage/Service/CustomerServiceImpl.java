@@ -25,4 +25,18 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepo.save(customer);
         return true;
     }
+
+    @Override
+    public Customer getCustomer(String customername) {
+        Customer customer = customerRepo.findByName(customername);
+        return customer;
+    }
+
+    @Override
+    public void updateCustomer(Customer customer) {
+        Customer tobechanged = customerRepo.findById(customer.getId()).get();
+        tobechanged.setName(customer.getName());
+        tobechanged.setAddress(customer.getAddress());
+        customerRepo.save(tobechanged);
+    }
 }
