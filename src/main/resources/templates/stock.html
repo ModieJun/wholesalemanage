@@ -51,9 +51,24 @@
     </table>
 </div>
 
+<div>
+    <h2>Search Stock</h2>
+    <form id="searchStock" action="" th:action="@{/stock}" onsubmit="searchFunction()">
+        <label>Stock Name: <input type="text"name="stock_name" id="stock_name"></label>
+        <input type="submit" value="Submit">
+    </form>
+    <script !src="">
+        <!--        Function used to append the emergency quantity to the uri -->
+        function searchFunction(){
+            var action_src = "/stock/" + document.getElementsByName("stock_name")[0].value;
+            var your_form = document.getElementById('searchStock');
+            your_form.action = action_src ;
+        }
+    </script>
+</div>
 <!--Stock Info-->
 <div th:if="${stockinfo}">
-    <h2>Stock info</h2>
+    <h3>Stock info</h3>
     <p th:text="${stockinfo.name}"></p>
     <p th:text="${stockinfo.quantity}"></p>
     <p th:text="${stockinfo.costPrice}"></p>
@@ -63,8 +78,8 @@
 
 <div>
     <h3>Get Emergency Stock</h3>
+    <br>
     <form id="emergencyQuery"action="" th:action="@{/stock/emergency/}" method="get" onsubmit="yourFunction()">
-        <br>
         <p>Stock quantitiy under:</p>
         <input type="number" name="quantity">
         <input type="submit" value="Submit">

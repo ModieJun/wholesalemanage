@@ -40,7 +40,6 @@ public class StockServiceImpl implements StockService {
     @Override
     public Stock getStock(String stockName) {
         Stock stock = stockRepo.findByName(stockName);
-
         return stock;
     }
 }
