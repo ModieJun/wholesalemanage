@@ -11,8 +11,8 @@
 </div>
 <br>
 <!--Adding Stock form-->
+<h2 >Add Stock <a th:if="!${stock}" href="/stock"> here </a></h2>
 <div  th:if="${stock}">
-    <h2>Add Stock</h2>
     <!--/*@thymesVar customerid="stock" type="db.project.wholesalemanage.Model.Stock"*/-->
     <form action="#" th:action="@{/stock/add}" method="post" th:object="${stock}">
         <p><label>Name: </label><input type="text" th:field="*{name}"></p>
@@ -22,6 +22,7 @@
         <input type="submit" value="Submit">
     </form>
 </div>
+
 
 <br>
 <div th:if="!${stocks}">

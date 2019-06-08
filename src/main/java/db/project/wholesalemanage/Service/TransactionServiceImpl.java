@@ -5,6 +5,8 @@ import db.project.wholesalemanage.Model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+
 @Service
 public class TransactionServiceImpl implements TransactionService {
 
@@ -22,6 +24,8 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Autowired
     private SupplierRepo supplierRepo;
+
+    private  Date currentDate;
 
     @Override
     public Iterable<Income> getAllIncome() {
@@ -46,6 +50,8 @@ public class TransactionServiceImpl implements TransactionService {
 //        Update the stock  since we sold
         stock.setQuantity(stock.getQuantity()-income.getQuantity());
         stockRepo.save(stock);
+        currentDate= new Date(System.currentTimeMillis());
+        income.setDate(currentDate);
         incomeRepo.save(income);
         return true;
     }
@@ -60,6 +66,8 @@ public class TransactionServiceImpl implements TransactionService {
 //        Update the stock since we added
         stock.setQuantity(stock.getQuantity()+expense.getQuantity());
         stockRepo.save(stock);
+        currentDate= new Date(System.currentTimeMillis());
+        expense.setDate(currentDate);
         expenseRepo.save(expense);
         return true;
     }
