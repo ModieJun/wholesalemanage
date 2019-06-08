@@ -43,6 +43,12 @@ public class TransactionController {
         return"transaction";
     }
 
+    @GetMapping("/income/customer/{customername}")
+    public String getIncomeByCustomerName(@PathVariable String customername,Model model){
+        model.addAttribute("customerTrans",transactionService.getIncomesByCustomerName(customername));
+        return "customer";
+    }
+
     @GetMapping("/expense/add")
     public String addExpensePage(Model model) {
         model.addAttribute("expense",new Expense());

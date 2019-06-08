@@ -7,4 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface IncomeRepo extends CrudRepository<Income,Long> {
     Iterable<Income> findByType(Type type);
     Iterable<Income> findByDateContaining(Long month);
+    Iterable<Income> findByCustomername(String customerName);
 }

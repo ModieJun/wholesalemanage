@@ -90,4 +90,9 @@ public class TransactionServiceImpl implements TransactionService {
     public Iterable<Expense> getExpensesBySupplierName(String suppliername) {
         return expenseRepo.findBySuppliername(suppliername);
     }
+
+    @Override
+    public Iterable<Income> getIncomesByCustomerName(String customername) {
+        return incomeRepo.findByCustomername(customername);
+    }
 }

@@ -19,4 +19,6 @@ public interface TransactionService {
 
     Iterable<Expense> getExpensesBySupplierName(String suppliername);
 
+    Iterable<Income> getIncomesByCustomerName(String customername);
+
 }
