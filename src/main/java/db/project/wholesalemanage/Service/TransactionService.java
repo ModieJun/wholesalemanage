@@ -17,4 +17,6 @@ public interface TransactionService {
 
     Iterable<Income> getPendingIncome();
 
+    Iterable<Expense> getExpensesBySupplierName(String suppliername);
+
 }

@@ -13,10 +13,10 @@ public class Income {
     private Type type;
 
 
-    private String stock_name;
+    private String stockname;
 
 
-    private  String customer_name;
+    private  String customername;
 
     private Double amount;
 
@@ -40,20 +40,20 @@ public class Income {
         this.type = type;
     }
 
-    public String getStock_name() {
-        return stock_name;
+    public String getStockname() {
+        return stockname;
     }
 
-    public void setStock_name(String stock_name) {
-        this.stock_name = stock_name;
+    public void setStockname(String stockname) {
+        this.stockname = stockname;
     }
 
-    public String getCustomer_name() {
-        return customer_name;
+    public String getCustomername() {
+        return customername;
     }
 
-    public void setCustomer_name(String customer_name) {
-        this.customer_name = customer_name;
+    public void setCustomername(String customername) {
+        this.customername = customername;
     }
 
     public Double getAmount() {

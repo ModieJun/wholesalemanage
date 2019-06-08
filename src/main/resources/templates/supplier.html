@@ -39,9 +39,32 @@
         <h3>Supplier info</h3>
         <p th:text="${supplierinfo.name}"></p>
         <p th:text="${supplierinfo.address}"></p>
+        <br>
+        <p>Filter all transaction with supplier <a  th:href="@{|/transaction/expense/${supplierinfo.name}|}">here</a></p>
     </div>
 </div>
 
+<div th:if="${suppliertransaction}">
+    <h3>Supplier transactions</h3>
+    <table>
+        <thead>
+            <th>Supplier name</th>
+            <th>Stock name</th>
+            <th>Amount</th>
+            <th>Quantity</th>
+            <th>Date</th>
+        </thead>
+        <tr th:each="trans: ${suppliertransaction}">
+            <td th:text="${trans.suppliername}"></td>
+            <td th:text="${trans.stockname}"></td>
+            <td th:text="${trans.amount}"></td>
+            <td th:text="${trans.quantity}"></td>
+            <td th:text="${trans.date}"></td>
+        </tr>
+    </table>
+</div>
+
+<h3 th:if="!${suppliers}">View All suppliers <a href="/supplier/all"> here</a></h3>
 <div th:if="${suppliers}">
     <h2>Suppliers</h2>
     <table>

@@ -10,10 +10,10 @@ public class Expense {
     private Long expenseId;
 
 
-    private String stock_name;
+    private String stockname;
 
 
-    private String supplier_name;
+    private String suppliername;
 
     private Long quantity;
 
@@ -29,20 +29,20 @@ public class Expense {
         this.expenseId = expenseId;
     }
 
-    public String getStock_name() {
-        return stock_name;
+    public String getStockname() {
+        return stockname;
     }
 
-    public void setStock_name(String stock_name) {
-        this.stock_name = stock_name;
+    public void setStockname(String stockname) {
+        this.stockname = stockname;
     }
 
-    public String getSupplier_name() {
-        return supplier_name;
+    public String getSuppliername() {
+        return suppliername;
     }
 
-    public void setSupplier_name(String supplier_name) {
-        this.supplier_name = supplier_name;
+    public void setSuppliername(String suppliername) {
+        this.suppliername = suppliername;
     }
 
     public Long getQuantity() {

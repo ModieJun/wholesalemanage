@@ -40,8 +40,8 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public Boolean addNewIncome(Income income) {
 //        If the stock and customer dont exist
-        Stock stock = stockRepo.findByName(income.getStock_name());
-        Customer customer = customerRepo.findByName(income.getCustomer_name());
+        Stock stock = stockRepo.findByName(income.getStockname());
+        Customer customer = customerRepo.findByName(income.getCustomername());
         if (stock==null||customer==null){
             return false;
         }else if (stock.getQuantity()<income.getQuantity()){
@@ -58,8 +58,8 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public Boolean addNewExpense(Expense expense) {
-        Stock stock= stockRepo.findByName(expense.getStock_name());
-        Supplier supplier= supplierRepo.findByName(expense.getSupplier_name());
+        Stock stock= stockRepo.findByName(expense.getStockname());
+        Supplier supplier= supplierRepo.findByName(expense.getSuppliername());
         if (stock == null || supplier == null) {
             return false;
         }
@@ -84,5 +84,10 @@ public class TransactionServiceImpl implements TransactionService {
         Type t = Type.PENDING;
         Iterable<Income> pendingIncome = incomeRepo.findByType(t);
         return pendingIncome;
+    }
+
+    @Override
+    public Iterable<Expense> getExpensesBySupplierName(String suppliername) {
+        return expenseRepo.findBySuppliername(suppliername);
     }
 }
