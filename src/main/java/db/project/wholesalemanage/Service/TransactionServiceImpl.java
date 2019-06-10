@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 public class TransactionServiceImpl implements TransactionService {
@@ -120,8 +121,15 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public Float calcProfit(Iterable<Income> incomes, Iterable<Expense> expenses) {
-        float profit= 30.00f;
-        return profit;
+        AtomicReference<Float> profit= new AtomicReference<>(0.00f);
+        incomes.forEach(income -> {
+            profit.updateAndGet(v -> new Float((float) (v + income.getAmount())));
+        });
+        expenses.forEach(expense -> {
+            profit.updateAndGet(v->new Float((float)(v-expense.getAmount())));
+        });
+//        System.err.println(profit.toString());
+        return profit.get();
 
     }
 }

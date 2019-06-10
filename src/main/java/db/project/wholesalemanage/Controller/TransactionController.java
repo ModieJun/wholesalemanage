@@ -104,7 +104,7 @@ public class TransactionController {
                 convertedDate.getMonth().length(convertedDate.isLeapYear()));
 //        String startDate= queryDate.toString();
 //        String endOfMonth=convertedDate.toString();
-        System.out.println(convertedDate.toString());
+//        System.out.println(convertedDate.toString());
 
 //      Convert the string date to util.sql.date()
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
