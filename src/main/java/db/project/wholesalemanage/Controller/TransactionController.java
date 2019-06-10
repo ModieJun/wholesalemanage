@@ -8,6 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 @Controller
 @RequestMapping("/transaction")
 public class TransactionController {
@@ -18,12 +24,6 @@ public class TransactionController {
     @GetMapping()
     public String transactionHome() {return "transaction"; }
 
-    @GetMapping("/all")
-    public String allTransaction(Model model) {
-        model.addAttribute("expenses",transactionService.getAllExpense());
-        model.addAttribute("incomes",transactionService.getAllIncome());
-        return  "transaction";
-    }
 
     @GetMapping("/paid")
     public String paidTransaction(Model model) {
@@ -52,6 +52,12 @@ public class TransactionController {
     @GetMapping("/expense/add")
     public String addExpensePage(Model model) {
         model.addAttribute("expense",new Expense());
+        return "transaction";
+    }
+
+    @GetMapping("/expense/all")
+    public String getAllExpense(Model model) {
+        model.addAttribute("expenses",transactionService.getAllExpense());
         return "transaction";
     }
 
@@ -86,10 +92,35 @@ public class TransactionController {
             Calculate the profit to date
      */
     @GetMapping("/profit")
-    public String profitCalc(){
+    public String profitCalcHome(){
         return "profit";
     }
 
+    @GetMapping("/profit/query")
+    public String calcProfit(@RequestParam String date,Model model){
+        StringBuffer queryDate = new StringBuffer(date+"-"+"01");
+        LocalDate convertedDate = LocalDate.parse(queryDate.toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        convertedDate = convertedDate.withDayOfMonth(
+                convertedDate.getMonth().length(convertedDate.isLeapYear()));
+//        String startDate= queryDate.toString();
+//        String endOfMonth=convertedDate.toString();
+        System.out.println(convertedDate.toString());
+
+//      Convert the string date to util.sql.date()
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date startDate= Date.valueOf(queryDate.toString());
+        Date endOfMonth=Date.valueOf(convertedDate.toString());
+
+
+        Iterable<Income> incomeResults= transactionService.getIncomeBetweenDates(startDate,endOfMonth);
+        Iterable<Expense> expenseResults = transactionService.getExpenseBetweenDates(startDate,endOfMonth);
+
+        Float profitLoss = transactionService.calcProfit(incomeResults,expenseResults);
+
+        model.addAttribute("incomeQuery",incomeResults);
+        model.addAttribute("expenseQuery",expenseResults);
+        return "profit";
+    }
 
     /*
     *   Post mappings

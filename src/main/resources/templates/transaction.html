@@ -9,10 +9,6 @@
     <h1>Transactions</h1>
     <h2><a href="/">Home</a></h2>
 </div>
-<!--@Todo
-    Remove the need to input amount for quantity of sale
-    and amount for quantity of purchase.
--->
 <div>
     <h1>Income</h1>
     <div th:if="!${income}">
@@ -126,6 +122,32 @@
             <input type="submit" value="submit">
         </form>
     </div>
+</div>
+<br>
+<div th:if="!${expenses}">
+    <h2>Show expense</h2>
+    <a href="/transaction/expense/all">view</a>
+</div>
+<div th:if="${expenses}">
+    <h2>Expense</h2>
+    <table>
+        <th>Expense Id</th>
+        <th>Stock name</th>
+        <th>Supplier name</th>
+        <th>Amount</th>
+        <th>Quantity</th>
+        <th>Date</th>
+        <th:block th:each="exp:${expenses}">
+            <tr>
+                <td th:text="${exp.expenseId}"></td>
+                <td th:text="${exp.stockname}"></td>
+                <td th:text="${exp.suppliername}"></td>
+                <td th:text="${exp.amount}"></td>
+                <td th:text="${exp.quantity}"></td>
+                <td th:text="${exp.date}"></td>
+            </tr>
+        </th:block>
+    </table>
 </div>
 
 
