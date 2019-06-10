@@ -10,7 +10,61 @@
     <h2><a href="/">Home</a></h2>
 </div>
 <div>
-
+    <form  th:action="@{/transaction/profit/query}" th:method="get">
+        <label>Date: <input type="month" name="date" ></label>
+        <input type="submit" value="Submit">
+    </form>
 </div>
+
+<div th:if="${totalProfit}">
+    <h3>Total profit for the month: <h3 th:text="${totalProfit}"></h3></h3>
+</div>
+
+<div th:if="${incomeQuery}">
+    <h2>Income(Sales)</h2>
+    <table>
+        <th>Income id</th>
+        <th>Type</th>
+        <th>Stock name</th>
+        <th>Customer name</th>
+        <th>Amount</th>
+        <th>Quantity</th>
+        <th>Date</th>
+        <th:block th:each="inc:${incomeQuery}">
+            <tr>
+                <td th:text="${inc.incomeid}"></td>
+                <td th:text="${inc.type}"></td>
+                <td th:text="${inc.stockname}"></td>
+                <td th:text="${inc.customername}"></td>
+                <td th:text="${inc.amount}"></td>
+                <td th:text="${inc.quantity}"></td>
+                <td th:text="${inc.date}"></td>
+            </tr>
+        </th:block>
+    </table>
+</div>
+
+<div th:if="${expenseQuery}">
+    <h2>Expense(Restocking)</h2>
+    <table>
+        <th>Expense Id</th>
+        <th>Stock name</th>
+        <th>Supplier name</th>
+        <th>Amount</th>
+        <th>Quantity</th>
+        <th>Date</th>
+        <th:block th:each="exp:${expenseQuery}">
+            <tr>
+                <td th:text="${exp.expenseId}"></td>
+                <td th:text="${exp.stockname}"></td>
+                <td th:text="${exp.suppliername}"></td>
+                <td th:text="${exp.amount}"></td>
+                <td th:text="${exp.quantity}"></td>
+                <td th:text="${exp.date}"></td>
+            </tr>
+        </th:block>
+    </table>
+</div>
+
 </body>
 </html>

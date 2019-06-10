@@ -107,4 +107,21 @@ public class TransactionServiceImpl implements TransactionService {
     public Iterable<Expense> getExpenseByStockname(String stockname) {
         return expenseRepo.findByStockname(stockname);
     }
+
+    @Override
+    public Iterable<Income> getIncomeBetweenDates(Date startMonth, Date endMonth) {
+        return incomeRepo.findAllByDateBetween(startMonth,endMonth);
+    }
+
+    @Override
+    public Iterable<Expense> getExpenseBetweenDates(Date startMonth, Date endOfMonth) {
+        return expenseRepo.findAllByDateBetween(startMonth,endOfMonth);
+    }
+
+    @Override
+    public Float calcProfit(Iterable<Income> incomes, Iterable<Expense> expenses) {
+        float profit= 30.00f;
+        return profit;
+
+    }
 }

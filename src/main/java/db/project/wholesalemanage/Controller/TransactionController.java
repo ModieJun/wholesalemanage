@@ -119,6 +119,7 @@ public class TransactionController {
 
         model.addAttribute("incomeQuery",incomeResults);
         model.addAttribute("expenseQuery",expenseResults);
+        model.addAttribute("totalProfit",profitLoss);
         return "profit";
     }
 
