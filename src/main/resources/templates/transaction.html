@@ -9,7 +9,10 @@
     <h1>Transactions</h1>
     <h2><a href="/">Home</a></h2>
 </div>
-
+<!--@Todo
+    Remove the need to input amount for quantity of sale
+    and amount for quantity of purchase.
+-->
 <div>
     <h1>Income</h1>
     <div th:if="!${income}">
@@ -29,9 +32,8 @@
                 <option th:each="type: ${T(db.project.wholesalemanage.Model.Type).values()}" th:value="${type}" th:text="${type}"></option>
             </select></label>
 
-            <label>Stock: <input type="text" th:field="*{stock_name}"></label>
-            <label>Customer: <input type="text" th:field="*{customer_name}"></label>
-            <label>Amount: <input type="number" th:field="*{amount}"></label>
+            <label>Stock: <input type="text" th:field="*{stockname}"></label>
+            <label>Customer: <input type="text" th:field="*{customername}"></label>
             <label>Quantity: <input type="number" th:field="*{quantity}"></label>
             <br>
             <input type="submit" value="submit">
@@ -48,8 +50,8 @@
                 <thead >
                     <th>Id</th>
                     <th>Type</th>
-                    <th>Stock Name</th>
-                    <th>Customer Name</th>
+                    <th>Stock name</th>
+                    <th>Customer name</th>
                     <th>Amount</th>
                     <th>Quantity</th>
                     <th>Date</th>
@@ -58,8 +60,8 @@
                     <tr>
                         <td th:text="${trans.incomeid}"></td>
                         <td th:text="${trans.type}"></td>
-                        <td th:text="${trans.stock_name}"></td>
-                        <td th:text="${trans.customer_name}"></td>
+                        <td th:text="${trans.stockname}"></td>
+                        <td th:text="${trans.customername}"></td>
                         <td th:text="${trans.amount}"></td>
                         <td th:text="${trans.quantity}"></td>
                         <td th:text="${trans.date}"></td>
@@ -78,8 +80,8 @@
                 <thead >
                     <th>Id</th>
                     <th>Type</th>
-                    <th>Stock Name</th>
-                    <th>Customer Name</th>
+                    <th>Stock name</th>
+                    <th>Customer name</th>
                     <th>Amount</th>
                     <th>Quantity</th>
                     <th>Date</th>
@@ -88,8 +90,8 @@
                     <tr>
                         <td th:text="${trans.incomeid}"></td>
                         <td th:text="${trans.type}"></td>
-                        <td th:text="${trans.stock_name}"></td>
-                        <td th:text="${trans.customer_name}"></td>
+                        <td th:text="${trans.stockname}"></td>
+                        <td th:text="${trans.customername}"></td>
                         <td th:text="${trans.amount}"></td>
                         <td th:text="${trans.quantity}"></td>
                         <td th:text="${trans.date}"></td>
@@ -117,9 +119,8 @@
     </div>
     <div th:if="${expense}">
         <form action="" th:action="@{/transaction/expense/add}" method="post"  th:object="${expense}">
-            <label>Stock: <input type="text" th:field="*{stock_name}"></label>
-            <label>Supplier: <input type="text" th:field="*{supplier_name}"></label>
-            <label>Amount: <input type="number" th:field="*{amount}"></label>
+            <label>Stock: <input type="text" th:field="*{stockname}"></label>
+            <label>Supplier: <input type="text" th:field="*{suppliername}"></label>
             <label>Quantity: <input type="number" th:field="*{quantity}"></label>
             <br>
             <input type="submit" value="submit">

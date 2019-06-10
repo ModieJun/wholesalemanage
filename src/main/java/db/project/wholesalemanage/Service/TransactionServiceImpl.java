@@ -51,6 +51,7 @@ public class TransactionServiceImpl implements TransactionService {
         stock.setQuantity(stock.getQuantity()-income.getQuantity());
         stockRepo.save(stock);
         currentDate= new Date(System.currentTimeMillis());
+        income.setAmount(income.getQuantity()*stock.getSellingPrice());
         income.setDate(currentDate);
         incomeRepo.save(income);
         return true;
@@ -65,6 +66,7 @@ public class TransactionServiceImpl implements TransactionService {
         }
 //        Update the stock since we added
         stock.setQuantity(stock.getQuantity()+expense.getQuantity());
+        expense.setAmount(expense.getQuantity()*stock.getCostPrice());
         stockRepo.save(stock);
         currentDate= new Date(System.currentTimeMillis());
         expense.setDate(currentDate);
@@ -94,5 +96,15 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public Iterable<Income> getIncomesByCustomerName(String customername) {
         return incomeRepo.findByCustomername(customername);
+    }
+
+    @Override
+    public Iterable<Income> getIncomeByStockname(String stockname) {
+        return  incomeRepo.findByStockname(stockname);
+    }
+
+    @Override
+    public Iterable<Expense> getExpenseByStockname(String stockname) {
+        return expenseRepo.findByStockname(stockname);
     }
 }
