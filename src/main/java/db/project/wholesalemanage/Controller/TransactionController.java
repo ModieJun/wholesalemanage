@@ -69,6 +69,17 @@ public class TransactionController {
         return "supplier";
     }
 
+    /*
+
+     */
+    @GetMapping("/stock/{stockname}")
+    public String getStockTransactions(@PathVariable String stockname,Model model){
+        Iterable<Income> incomeResult = transactionService.getIncomeByStockname(stockname);
+        Iterable<Expense> expenseResult = transactionService.getExpenseByStockname(stockname);
+        model.addAttribute("stockIncome",incomeResult);
+        model.addAttribute("stockExpense",expenseResult);
+        return "stock";
+    }
 
     /*
         @ProftCalculation

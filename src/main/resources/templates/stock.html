@@ -66,9 +66,65 @@
     <p th:text="${stockinfo.quantity}"></p>
     <p th:text="${stockinfo.costPrice}"></p>
     <p th:text="${stockinfo.sellingPrice}"></p>
+    <br>
+    <p>View all stock transactions <a th:href="@{|/transaction/stock/${stockinfo.name}|}">view</a> </p>
 </div>
 
 
+<div th:if="${stockExpense} and ${stockIncome}">
+    <h3>Stock Sales</h3>
+    <div>
+        <table >
+            <thead >
+            <th>Id</th>
+            <th>Type</th>
+            <th>Stock Name</th>
+            <th>Customer Name</th>
+            <th>Amount</th>
+            <th>Quantity</th>
+            <th>Date</th>
+            </thead>
+            <th:block th:each="trans:${stockIncome}">
+                <tr>
+                    <td th:text="${trans.incomeid}"></td>
+                    <td th:text="${trans.type}"></td>
+                    <td th:text="${trans.stockname}"></td>
+                    <td th:text="${trans.customername}"></td>
+                    <td th:text="${trans.amount}"></td>
+                    <td th:text="${trans.quantity}"></td>
+                    <td th:text="${trans.date}"></td>
+                </tr>
+            </th:block>
+        </table>
+    <br>
+    </div>
+
+    <div>
+        <h3>Stock re-stocking</h3>
+        <table >
+            <thead >
+            <th>Id</th>
+            <th>Stock Name</th>
+            <th>Supplier Name</th>
+            <th>Amount</th>
+            <th>Quantity</th>
+            <th>Date</th>
+            </thead>
+            <th:block th:each="expTrans:${stockExpense}">
+                <tr>
+                    <td th:text="${expTrans.expenseId}"></td>
+                    <td th:text="${expTrans.stockname}"></td>
+                    <td th:text="${expTrans.suppliername}"></td>
+                    <td th:text="${expTrans.amount}"></td>
+                    <td th:text="${expTrans.quantity}"></td>
+                    <td th:text="${expTrans.date}"></td>
+                </tr>
+            </th:block>
+        </table>
+    </div>
+</div>
+
+<br>
 <div>
     <h3>Get Emergency Stock</h3>
     <form customerid="emergencyQuery"action="" th:action="@{/stock/emergency/}" method="get" >
