@@ -16,7 +16,9 @@ public class Income {
     @JoinColumn(name = "stockid")
     private Stock stock;
 
-    private  String customername;
+    @ManyToOne
+    @JoinColumn(name = "customerid")
+    private  Customer customer;
 
     private Double amount;
 
@@ -48,12 +50,12 @@ public class Income {
         this.stock = stock;
     }
 
-    public String getCustomername() {
-        return customername;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomername(String customername) {
-        this.customername = customername;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Double getAmount() {

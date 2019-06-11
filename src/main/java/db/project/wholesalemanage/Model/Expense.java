@@ -13,8 +13,9 @@ public class Expense {
     @JoinColumn(name = "stockid")
     private Stock stock;
 
-
-    private String suppliername;
+    @ManyToOne
+    @JoinColumn(name = "supplierid")
+    private Supplier supplier;
 
     private Long quantity;
 
@@ -38,12 +39,12 @@ public class Expense {
         this.stock = stock;
     }
 
-    public String getSuppliername() {
-        return suppliername;
+    public Supplier getSupplier() {
+        return supplier;
     }
 
-    public void setSuppliername(String suppliername) {
-        this.suppliername = suppliername;
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
     }
 
     public Long getQuantity() {

@@ -42,7 +42,7 @@ public class TransactionServiceImpl implements TransactionService {
     public Boolean addNewIncome(Income income) {
 //        If the stock and customer dont exist
         Stock stock = stockRepo.findByName(income.getStock().getName());
-        Customer customer = customerRepo.findByName(income.getCustomername());
+        Customer customer = customerRepo.findByName(income.getCustomer().getName());
         if (stock==null||customer==null){
             return false;
         }else if (stock.getQuantity()<income.getQuantity()){
@@ -55,6 +55,7 @@ public class TransactionServiceImpl implements TransactionService {
         income.setAmount(income.getQuantity()*stock.getSellingPrice());
         income.setDate(currentDate);
         income.setStock(stock);
+        income.setCustomer(customer);
         incomeRepo.save(income);
         return true;
     }
@@ -62,7 +63,7 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public Boolean addNewExpense(Expense expense) {
         Stock stock= stockRepo.findByName(expense.getStock().getName());
-        Supplier supplier= supplierRepo.findByName(expense.getSuppliername());
+        Supplier supplier= supplierRepo.findByName(expense.getSupplier().getName());
         if (stock == null || supplier == null) {
             return false;
         }
@@ -73,6 +74,7 @@ public class TransactionServiceImpl implements TransactionService {
         currentDate= new Date(System.currentTimeMillis());
         expense.setDate(currentDate);
         expense.setStock(stock);
+        expense.setSupplier(supplier);
         expenseRepo.save(expense);
         return true;
     }
@@ -93,12 +95,14 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public Iterable<Expense> getExpensesBySupplierName(String suppliername) {
-        return expenseRepo.findBySuppliername(suppliername);
+        Supplier supplier = supplierRepo.findByName(suppliername);
+        return expenseRepo.findBySupplier(supplier);
     }
 
     @Override
     public Iterable<Income> getIncomesByCustomerName(String customername) {
-        return incomeRepo.findByCustomername(customername);
+        Customer customer= customerRepo.findByName(customername);
+        return incomeRepo.findByCustomer(customer);
     }
 
     @Override

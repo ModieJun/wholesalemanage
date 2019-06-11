@@ -57,7 +57,7 @@
             <th>Date</th>
         </thead>
         <tr th:each="trans: ${suppliertransaction}">
-            <td th:text="${trans.suppliername}"></td>
+            <td th:text="${trans.supplier.name}"></td>
             <td th:text="${trans.stock.name}"></td>
             <td th:text="${trans.amount}"></td>
             <td th:text="${trans.quantity}"></td>

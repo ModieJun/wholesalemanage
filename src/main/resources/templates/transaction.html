@@ -29,7 +29,7 @@
             </select></label>
 
             <label>Stock: <input type="text" th:field="*{stock.name}"></label>
-            <label>Customer: <input type="text" th:field="*{customername}"></label>
+            <label>Customer: <input type="text" th:field="*{customer.name}"></label>
             <label>Quantity: <input type="number" th:field="*{quantity}"></label>
             <br>
             <input type="submit" value="submit">
@@ -57,7 +57,7 @@
                         <td th:text="${trans.incomeid}"></td>
                         <td th:text="${trans.type}"></td>
                         <td th:text="${trans.stock.name}"></td>
-                        <td th:text="${trans.customername}"></td>
+                        <td th:text="${trans.customer.name}"></td>
                         <td th:text="${trans.amount}"></td>
                         <td th:text="${trans.quantity}"></td>
                         <td th:text="${trans.date}"></td>
@@ -87,7 +87,7 @@
                         <td th:text="${trans.incomeid}"></td>
                         <td th:text="${trans.type}"></td>
                         <td th:text="${trans.stock.name}"></td>
-                        <td th:text="${trans.customername}"></td>
+                        <td th:text="${trans.customer.name}"></td>
                         <td th:text="${trans.amount}"></td>
                         <td th:text="${trans.quantity}"></td>
                         <td th:text="${trans.date}"></td>
@@ -116,7 +116,7 @@
     <div th:if="${expense}">
         <form action="" th:action="@{/transaction/expense/add}" method="post"  th:object="${expense}">
             <label>Stock: <input type="text" th:field="*{stock.name}"></label>
-            <label>Supplier: <input type="text" th:field="*{suppliername}"></label>
+            <label>Supplier: <input type="text" th:field="*{supplier.name}"></label>
             <label>Quantity: <input type="number" th:field="*{quantity}"></label>
             <br>
             <input type="submit" value="submit">
@@ -141,7 +141,7 @@
             <tr>
                 <td th:text="${exp.expenseId}"></td>
                 <td th:text="${exp.stock.name}"></td>
-                <td th:text="${exp.suppliername}"></td>
+                <td th:text="${exp.supplier.name}"></td>
                 <td th:text="${exp.amount}"></td>
                 <td th:text="${exp.quantity}"></td>
                 <td th:text="${exp.date}"></td>

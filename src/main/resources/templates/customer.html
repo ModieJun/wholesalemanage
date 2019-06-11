@@ -60,13 +60,15 @@
     <table>
         <thead>
             <th>Customer Name</th>
+            <th>Stock name</th>
             <th>Type</th>
             <th>Amount</th>
             <th>Quantity</th>
             <th>Date</th>
         </thead>
         <tr th:each="income: ${customerTrans}">
-            <td th:text="${income.customername}"></td>
+            <td th:text="${income.customer.name}"></td>
+            <td th:text="${income.stock.name}"></td>
             <td th:text="${income.type}"></td>
             <td th:text="${income.amount}"></td>
             <td th:text="${income.quantity}"></td>

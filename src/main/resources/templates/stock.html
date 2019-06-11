@@ -88,8 +88,8 @@
                 <tr>
                     <td th:text="${trans.incomeid}"></td>
                     <td th:text="${trans.type}"></td>
-                    <td th:text="${trans.stock}"></td>
-                    <td th:text="${trans.customername}"></td>
+                    <td th:text="${trans.stock.name}"></td>
+                    <td th:text="${trans.customer.name}"></td>
                     <td th:text="${trans.amount}"></td>
                     <td th:text="${trans.quantity}"></td>
                     <td th:text="${trans.date}"></td>
@@ -113,8 +113,8 @@
             <th:block th:each="expTrans:${stockExpense}">
                 <tr>
                     <td th:text="${expTrans.expenseId}"></td>
-                    <td th:text="${expTrans.stock}"></td>
-                    <td th:text="${expTrans.suppliername}"></td>
+                    <td th:text="${expTrans.stock.name}"></td>
+                    <td th:text="${expTrans.supplier.name}"></td>
                     <td th:text="${expTrans.amount}"></td>
                     <td th:text="${expTrans.quantity}"></td>
                     <td th:text="${expTrans.date}"></td>
