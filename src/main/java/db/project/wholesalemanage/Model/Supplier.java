@@ -11,6 +11,9 @@ public class Supplier {
     private String name;
     private String Address;
 
+    @OneToOne()
+    @JoinColumn(name = "stock_id",unique = true,updatable = true)
+    private Stock stock;
 
     public Long getSupplierid() {
         return supplierid;
@@ -36,4 +39,11 @@ public class Supplier {
         Address = address;
     }
 
+    public Stock getStock() {
+        return stock;
+    }
+
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
 }

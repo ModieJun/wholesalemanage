@@ -19,6 +19,7 @@
         <!--/*@thymesVar customerid="supplier" type="db.project.wholesalemanage.Model.Supplier"*/-->
         <div th:object="${supplier}">
             <label>Name: <input type="text" customerid="suppliername" name="suppliername" th:field="*{name}"></label>
+            <label>Stock name: <input type="text" th:field="${supplier.stock.name}"></label>
             <label>Address: <input type="text" name="supplieraddress" th:field="*{address}"></label>
         </div>
         <br>
@@ -38,6 +39,7 @@
     <div th:if="${supplierinfo}">
         <h3>Supplier info</h3>
         <p th:text="${supplierinfo.name}"></p>
+        <p th:text="${supplierinfo.stock.name}"></p>
         <p th:text="${supplierinfo.address}"></p>
         <br>
         <p>Filter all transaction with supplier <a  th:href="@{|/transaction/expense/${supplierinfo.name}|}">here</a></p>
@@ -70,10 +72,12 @@
     <table>
         <thead>
         <th>Name</th>
+        <t>Stock name</t>
         <th>Address</th>
         </thead>
         <tr th:each="supplier: ${suppliers}">
             <td th:text="${supplier.name}"></td>
+            <td th:text="${supplier.stock.name}"></td>
             <td th:text="${supplier.address}"></td>
         </tr>
     </table>
