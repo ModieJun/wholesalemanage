@@ -28,7 +28,7 @@
                 <option th:each="type: ${T(db.project.wholesalemanage.Model.Type).values()}" th:value="${type}" th:text="${type}"></option>
             </select></label>
 
-            <label>Stock: <input type="text" th:field="*{stockname}"></label>
+            <label>Stock: <input type="text" th:field="*{stock.name}"></label>
             <label>Customer: <input type="text" th:field="*{customername}"></label>
             <label>Quantity: <input type="number" th:field="*{quantity}"></label>
             <br>
@@ -56,7 +56,7 @@
                     <tr>
                         <td th:text="${trans.incomeid}"></td>
                         <td th:text="${trans.type}"></td>
-                        <td th:text="${trans.stockname}"></td>
+                        <td th:text="${trans.stock.name}"></td>
                         <td th:text="${trans.customername}"></td>
                         <td th:text="${trans.amount}"></td>
                         <td th:text="${trans.quantity}"></td>
@@ -86,7 +86,7 @@
                     <tr>
                         <td th:text="${trans.incomeid}"></td>
                         <td th:text="${trans.type}"></td>
-                        <td th:text="${trans.stockname}"></td>
+                        <td th:text="${trans.stock.name}"></td>
                         <td th:text="${trans.customername}"></td>
                         <td th:text="${trans.amount}"></td>
                         <td th:text="${trans.quantity}"></td>
@@ -115,7 +115,7 @@
     </div>
     <div th:if="${expense}">
         <form action="" th:action="@{/transaction/expense/add}" method="post"  th:object="${expense}">
-            <label>Stock: <input type="text" th:field="*{stockname}"></label>
+            <label>Stock: <input type="text" th:field="*{stock.name}"></label>
             <label>Supplier: <input type="text" th:field="*{suppliername}"></label>
             <label>Quantity: <input type="number" th:field="*{quantity}"></label>
             <br>
@@ -140,7 +140,7 @@
         <th:block th:each="exp:${expenses}">
             <tr>
                 <td th:text="${exp.expenseId}"></td>
-                <td th:text="${exp.stockname}"></td>
+                <td th:text="${exp.stock.name}"></td>
                 <td th:text="${exp.suppliername}"></td>
                 <td th:text="${exp.amount}"></td>
                 <td th:text="${exp.quantity}"></td>

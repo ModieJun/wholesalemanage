@@ -12,9 +12,9 @@ public class Income {
     @Enumerated(EnumType.STRING)
     private Type type;
 
-
-    private String stockname;
-
+    @ManyToOne
+    @JoinColumn(name = "stockid")
+    private Stock stock;
 
     private  String customername;
 
@@ -40,12 +40,12 @@ public class Income {
         this.type = type;
     }
 
-    public String getStockname() {
-        return stockname;
+    public Stock getStock() {
+        return stock;
     }
 
-    public void setStockname(String stockname) {
-        this.stockname = stockname;
+    public void setStock(Stock stock) {
+        this.stock = stock;
     }
 
     public String getCustomername() {

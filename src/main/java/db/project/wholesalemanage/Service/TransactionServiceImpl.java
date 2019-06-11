@@ -41,7 +41,7 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public Boolean addNewIncome(Income income) {
 //        If the stock and customer dont exist
-        Stock stock = stockRepo.findByName(income.getStockname());
+        Stock stock = stockRepo.findByName(income.getStock().getName());
         Customer customer = customerRepo.findByName(income.getCustomername());
         if (stock==null||customer==null){
             return false;
@@ -54,13 +54,14 @@ public class TransactionServiceImpl implements TransactionService {
         currentDate= new Date(System.currentTimeMillis());
         income.setAmount(income.getQuantity()*stock.getSellingPrice());
         income.setDate(currentDate);
+        income.setStock(stock);
         incomeRepo.save(income);
         return true;
     }
 
     @Override
     public Boolean addNewExpense(Expense expense) {
-        Stock stock= stockRepo.findByName(expense.getStockname());
+        Stock stock= stockRepo.findByName(expense.getStock().getName());
         Supplier supplier= supplierRepo.findByName(expense.getSuppliername());
         if (stock == null || supplier == null) {
             return false;
@@ -71,6 +72,7 @@ public class TransactionServiceImpl implements TransactionService {
         stockRepo.save(stock);
         currentDate= new Date(System.currentTimeMillis());
         expense.setDate(currentDate);
+        expense.setStock(stock);
         expenseRepo.save(expense);
         return true;
     }
@@ -101,12 +103,14 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public Iterable<Income> getIncomeByStockname(String stockname) {
-        return  incomeRepo.findByStockname(stockname);
+        Stock stock = stockRepo.findByName(stockname);
+        return  incomeRepo.findByStock(stock);
     }
 
     @Override
     public Iterable<Expense> getExpenseByStockname(String stockname) {
-        return expenseRepo.findByStockname(stockname);
+        Stock stock = stockRepo.findByName(stockname);
+        return expenseRepo.findByStock(stock);
     }
 
     @Override

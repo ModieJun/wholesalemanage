@@ -58,7 +58,7 @@
         </thead>
         <tr th:each="trans: ${suppliertransaction}">
             <td th:text="${trans.suppliername}"></td>
-            <td th:text="${trans.stockname}"></td>
+            <td th:text="${trans.stock.name}"></td>
             <td th:text="${trans.amount}"></td>
             <td th:text="${trans.quantity}"></td>
             <td th:text="${trans.date}"></td>
@@ -72,7 +72,7 @@
     <table>
         <thead>
         <th>Name</th>
-        <t>Stock name</t>
+        <th>Stock name</th>
         <th>Address</th>
         </thead>
         <tr th:each="supplier: ${suppliers}">

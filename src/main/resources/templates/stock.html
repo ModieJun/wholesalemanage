@@ -55,7 +55,7 @@
 <div>
     <h2>Search Stock</h2>
     <form customerid="searchStock" action="" th:action="@{/stock/find}" >
-        <label>Stock Name: <input type="text"name="stockname" ></label>
+        <label>Stock Name: <input type="text"name="stock" ></label>
         <input type="submit" value="Submit">
     </form>
 </div>
@@ -88,7 +88,7 @@
                 <tr>
                     <td th:text="${trans.incomeid}"></td>
                     <td th:text="${trans.type}"></td>
-                    <td th:text="${trans.stockname}"></td>
+                    <td th:text="${trans.stock}"></td>
                     <td th:text="${trans.customername}"></td>
                     <td th:text="${trans.amount}"></td>
                     <td th:text="${trans.quantity}"></td>
@@ -113,7 +113,7 @@
             <th:block th:each="expTrans:${stockExpense}">
                 <tr>
                     <td th:text="${expTrans.expenseId}"></td>
-                    <td th:text="${expTrans.stockname}"></td>
+                    <td th:text="${expTrans.stock}"></td>
                     <td th:text="${expTrans.suppliername}"></td>
                     <td th:text="${expTrans.amount}"></td>
                     <td th:text="${expTrans.quantity}"></td>

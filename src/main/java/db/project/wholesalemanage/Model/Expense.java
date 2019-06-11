@@ -9,8 +9,9 @@ public class Expense {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long expenseId;
 
-
-    private String stockname;
+    @ManyToOne
+    @JoinColumn(name = "stockid")
+    private Stock stock;
 
 
     private String suppliername;
@@ -29,12 +30,12 @@ public class Expense {
         this.expenseId = expenseId;
     }
 
-    public String getStockname() {
-        return stockname;
+    public Stock getStock() {
+        return stock;
     }
 
-    public void setStockname(String stockname) {
-        this.stockname = stockname;
+    public void setStock(Stock stock) {
+        this.stock = stock;
     }
 
     public String getSuppliername() {
