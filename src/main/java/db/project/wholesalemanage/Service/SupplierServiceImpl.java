@@ -27,9 +27,10 @@ public class SupplierServiceImpl implements SupplierService {
         Supplier supp= supplierRepo.findByName(supplier.getName());
         Stock stock = stockRepo.findByName(supplier.getStock().getName());
 //        If the supplier exists or stock doesnt exist;
-        if (supp!=null || stock==null){
+        if (supp!=null || stock==null|| supplierRepo.findByStock(stock)!=null){
             return false;
         }
+
         supplier.setStock(stock);
         supplierRepo.save(supplier);
         return true;
