@@ -55,17 +55,25 @@
 <div>
     <h2>Search Stock</h2>
     <form customerid="searchStock" action="" th:action="@{/stock/find}" >
-        <label>Stock Name: <input type="text"name="stock" ></label>
+        <label>Stock Name: <input type="text"name="stockname" ></label>
         <input type="submit" value="Submit">
     </form>
 </div>
 <!--Stock Info-->
 <div th:if="${stockinfo}">
     <h3>Stock info</h3>
-    <p th:text="${stockinfo.name}"></p>
-    <p th:text="${stockinfo.quantity}"></p>
-    <p th:text="${stockinfo.costPrice}"></p>
-    <p th:text="${stockinfo.sellingPrice}"></p>
+    <table>
+        <th>Stock name</th>
+        <th>Quantity</th>
+        <th>Cost price</th>
+        <th>Selling price</th>
+        <tr>
+            <td th:text="${stockinfo.name}"></td>
+            <td th:text="${stockinfo.quantity}"></td>
+            <td th:text="${stockinfo.costPrice}"></td>
+            <td th:text="${stockinfo.sellingPrice}"></td>
+        </tr>
+    </table>
     <br>
     <p>View all stock transactions <a th:href="@{|/transaction/stock/${stockinfo.name}|}">view</a> </p>
 </div>
